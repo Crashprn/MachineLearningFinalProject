@@ -12,7 +12,7 @@ class NeuralNetwork(nn.Module):
 
         self.stem = nn.Sequential(nn.Linear(input_size, hidden_size), activation)
 
-        self.layers = []
+        self.layers = nn.ModuleList()
         for i in range(num_layers):
             self.layers.append(nn.Linear(hidden_size, hidden_size))
             self.layers.append(activation)
@@ -22,6 +22,6 @@ class NeuralNetwork(nn.Module):
     def forward(self, x):
         x = self.stem(x)
         for layer in self.layers:
-            x += layer(x)
+            x = x + layer(x)
         x = self.output(x)
         return x
