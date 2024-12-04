@@ -129,3 +129,64 @@ Logistic Regression, SVC, and Random Forest Classifica-
 tion. This project also utilizes PyTorch for implementing
 Neural Networks and accessing a pre-trained version of
 BERT.
+
+## The Results
+
+### Visualization
+
+The team begins by visualizing the vectorized output of
+the original pre-trained BERT model.
+
+![image](./figures/untuned/Visualization_grid.png)
+
+Fig. 1: Visualization of original BERT pooled output on
+tweet dataset.
+
+Fig. 1 shows the output from the original pre-trained
+BERT model allows for some separation of the data in two
+dimensions. However, there is still a significant amount of
+mixing where the decision boundary in two dimensions is
+unclear.
+
+![image](./figures/tuned_encoder1/Visualization_grid.png)
+
+Fig. 2: Visualization of BERT pooled output after tuning
+pooling layer on tweet dataset.
+
+Fig. 2 shows fine-tuning the pooling layer of BERT
+allows for more separation of the data in two dimensions.
+A significantly greater clustering of the actual disaster-
+related tweets can be seen compared to Fig. 1. This shows
+classification on the pooling layer tuned version of BERT
+likely will increase the performance of the machine learning
+methods. However, the tuning is likely not as effective as
+putting more weight on words or combinations of words
+that have a high likelihood of being disaster-related.
+
+![image](./figures/tuned_encoder4/Visualization_grid.png)
+Fig. 3: Visualization of BERT pooled output after tuning
+one attention head on tweet dataset.
+
+
+
+Fig. 3 reinforces the previous conclusion that specific
+words or combinations of words have a high likelihood
+of being disaster-related. This is due to the increase in
+separability in the two-dimensional output from each of the
+methods. Fig. 3 also shows there are still some tweets that
+are difficult to classify and all methods show there is a clear
+overlap point in the tweets.
+Fig. 4: Visualization of BERT pooled output after tuning
+four attention heads on tweet dataset.
+Fig. 4 shows that after fine-tuning four of BERT’s atten-
+tion heads, the data is more separable in two dimensions
+compared to results shown in Fig. 1. This further solidifies
+the conclusion that much of BERT’s understanding of
+sentence structure is in the attention heads. In addition, the
+separability of the data also shows the highest accuracy
+of each machine-learning method will likely occur when
+the maximum attention heads are fine-tuned. The UMAP
+visualization of the data in Fig. 4 also shows there are 2
+distinct groups in the data. In the PHATE visualization, one
+can see the same extremely sparse connection between the
+two classes.
