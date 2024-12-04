@@ -1,4 +1,4 @@
-# Machine Learning Final Project/ Classifying Disaster Tweets Using BERT
+# Machine Learning Final Project / Classifying Disaster Tweets Using BERT
 
 ## The Goal
 
@@ -36,3 +36,96 @@ Transformers) for interpreting natural language as in [4].
 As a result, the team proposes using BERT to transform
 the tweets into features for each of the machine-learning
 methods.
+
+## The Data
+
+The dataset for this project is from the Kaggle competi-
+tion, ”Natural Language Processing with Disaster Tweets”
+[2] which is a supervised classification task. This dataset
+consists of 7,614 data points with 3 features, namely:
+keyword, location, and the actual text of the tweet. For this
+project, the team will only be using the text of the tweet to
+classify each tweet as belonging to a natural disaster report.
+For preprocessing, the team uses a predefined tokenizer
+to split the tweets into embeddings interpretable by BERT.
+Each tweet is then padded to 512 tokens to produce a text
+dataset with a constant feature length. This representation
+is more conducive to parallel evaluation on modern GPUs.
+The dataset is then split into 80% training, 20% validation,
+and an additional testing dataset without labels is provided
+by Kaggle. To measure performance the team uses 5 fold
+cross-validation accuracy to rank each of the methods. This
+is a result of not having labels for the testing dataset and
+not being able to submit answers to Kaggle multiple times.
+In addition, the F1 score of the best-performing machine-
+learning method is computed for comparison to the Kaggle
+leaderboard.
+
+## The Methods
+
+### Prompt to Features
+Recognizing the complex nature of textual input to a
+machine learning method, this project leverages the modern
+transformer Neural Network BERT to map textual informa-
+tion to a reduced-dimensional vector representation. This
+process is done using a pre-trained uncased version of
+BERT and using the final pooled output from each text input
+as input features for each of the machine learning methods.
+By using a pre-trained version, the BERT model already
+has a fairly intricate understanding of natural language
+and relationships between words in the form of a latent
+representation.
+To further improve prediction, the team fine-tunes the
+parameters of BERT in multiple stages to see how the
+output features improve. This fine-tuning is typically re-
+ferred to as Transfer Learning, where the understanding
+of one model is used in a similar problem. In the case
+of this project, the language understanding of BERT is
+transferred to classifying language as a disaster report or
+not. The transfer learning is done by adding another layer
+after BERT’s pooling layer and training BERT to classify a
+training set of tweets. In doing this, the researchers can fine-
+tune some of BERT’s parameters to specialize to the task.
+The researchers determine the effectiveness of the transfer
+learning by isolating the fine-tuning to the pooling layer,
+one attention head, three attention heads, four attention
+heads, and four attention heads with the pooling layer.
+
+### Visualization
+This project utilizes Uniform Manifold Approximation
+and Projection (UMAP) as in [3], Kernel Principle Compo-
+nents Analysis (KPCA), T-distributed Stochastic Neighbor
+Embedding (T-SNE), and Potential of Heat-diffusion for
+Affinity-based Transition Embedding (PHATE) to visualize
+the vectorized output from the BERT model. The goal
+of the visualization is to determine if natural clusters or
+clear separation is present in the vectorized version of the
+prompts. Determining a relationship between the prompts
+and inputs allows for more targeted exploration of the input
+prompts. The data visualization also gives a rough estimate
+of how effective each machine-learning method will be on
+the BERT features. In addition, the team also visualizes the
+transfer learning process by showing the BERT features
+at varying degrees of fine-tuning. This also shows which
+elements of BERT are more important for classifying the
+disaster tweets.
+
+### Algorithms
+In many ways, this project can be viewed from the
+transfer learning perspective, where the goal is to learn a
+mapping of the output of BERT that classifies the prompts
+correctly. To accomplish the classification, the project uses
+Logistic Regression, Support Vector Classification (SVC),
+Random Forest Classification, and a Neural Network. Hy-
+perparameter tuning for each of the machine learning meth-
+ods is done by performing a grid search over the relevant
+parameters for each method. Each of the methods then
+trains on the BERT features and is evaluated based on their
+accuracy. This helps the team understand the effect of fine-
+tuning different elements of BERT as well as which method
+performs the best.
+This project utilizes Sci-Kit Learn’s implementation of
+Logistic Regression, SVC, and Random Forest Classifica-
+tion. This project also utilizes PyTorch for implementing
+Neural Networks and accessing a pre-trained version of
+BERT.
