@@ -204,11 +204,11 @@ Table I. A table of 5-fold CV accuracy of different methods on varying tuning le
 |Tuning | Log. Reg. | RFC | SVC | NN |
 |-------|-----------|-----|-----|----|
 | None | 0.792 | 0.754 | **0.794** | 0.7404 |
-Pooling | **0.800** | 0.790 & 0.799 & 0.783 \\
-1 Attention & \textbf{0.847} & 0.844 & 0.826 & 0.833 \\
-3 Attention & \textbf{0.880} & 0.877 & 0.869 & 0.873 \\
-4 Attention & \textbf{0.900} & 0.899 & 0.891 & 0.887 \\
-4 Att \& Pool & 0.906 & 0.902 & 0.903 & \textbf{0.910} \\ \hline \hline
+|Pooling     | **0.800** | 0.790 | 0.799 | 0.783 |
+|1 Attention | **0.847** | 0.844 | 0.826 | 0.833 |
+|3 Attention | **0.880** | 0.877 | 0.869 | 0.873 |
+|4 Attention | **0.900** | 0.899 | 0.891 | 0.887 |
+|4 Att & Pool| 0.906 | 0.902 | 0.903 | **0.910** |
 
 Table I shows the testing performance for each of the
 machine-learning methods. In general, each of the methods
@@ -229,17 +229,13 @@ TABLE II: A table of prompts that were classified incor-
 rectly by all machine learning methods on output from fine-
 tuned(4 Att & Pool) BERT.
 
-Text Prompt Disaster?
-like for this music video I want some real action like
-burning buildings and police chases
-No
-He came to a land which was engulfed in tribal war
-and turned it into a land of peace
-Yes
-Caution: breathing may be hazardous to your health. Yes
-In #islam saving a person is equal in reward to saving
-all humans! Islam is the opposite of terrorism!
-No
+|Text Prompt| Disaster?|
+|-----------|----------|
+|like for this music video I want some real action likeburning buildings and police chases| No |
+|He came to a land which was engulfed in tribal war and turned it into a land of peace |Yes|
+|Caution: breathing may be hazardous to your health.| Yes|
+|In #islam saving a person is equal in reward to saving all humans! Islam is the opposite of terrorism!| No |
+
 Table III shows the text prompts that are misclassified
 by all of the machine learning methods. From this one
 can see all of the methods are most likely looking for
