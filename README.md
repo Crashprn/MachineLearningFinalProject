@@ -148,7 +148,7 @@ dimensions. However, there is still a significant amount of
 mixing where the decision boundary in two dimensions is
 unclear.
 
-![image](./figures/tuned_encoder1/Visualization_grid.png)
+![image](./figures/tuned_pool/Visualization_grid.png)
 
 Fig. 2: Visualization of BERT pooled output after tuning
 pooling layer on tweet dataset.
@@ -163,7 +163,8 @@ methods. However, the tuning is likely not as effective as
 putting more weight on words or combinations of words
 that have a high likelihood of being disaster-related.
 
-![image](./figures/tuned_encoder4/Visualization_grid.png)
+![image](./figures/tuned_encoder1/Visualization_grid.png)
+
 Fig. 3: Visualization of BERT pooled output after tuning
 one attention head on tweet dataset.
 
@@ -176,8 +177,13 @@ separability in the two-dimensional output from each of the
 methods. Fig. 3 also shows there are still some tweets that
 are difficult to classify and all methods show there is a clear
 overlap point in the tweets.
+
+
+![image](./figures/tuned_encoder4/Visualization_grid.png)
+
 Fig. 4: Visualization of BERT pooled output after tuning
 four attention heads on tweet dataset.
+
 Fig. 4 shows that after fine-tuning four of BERT’s atten-
 tion heads, the data is more separable in two dimensions
 compared to results shown in Fig. 1. This further solidifies
