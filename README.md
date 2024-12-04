@@ -196,3 +196,62 @@ visualization of the data in Fig. 4 also shows there are 2
 distinct groups in the data. In the PHATE visualization, one
 can see the same extremely sparse connection between the
 two classes.
+
+### Machine Learning Methods
+
+Table I. A table of 5-fold CV accuracy of different methods on varying tuning levels of BERT.
+
+|Tuning | Log. Reg. | RFC | SVC | NN |
+|-------|-----------|-----|-----|----|
+| None | 0.792 | 0.754 | **0.794** | 0.7404 |
+Pooling | **0.800** | 0.790 & 0.799 & 0.783 \\
+1 Attention & \textbf{0.847} & 0.844 & 0.826 & 0.833 \\
+3 Attention & \textbf{0.880} & 0.877 & 0.869 & 0.873 \\
+4 Attention & \textbf{0.900} & 0.899 & 0.891 & 0.887 \\
+4 Att \& Pool & 0.906 & 0.902 & 0.903 & \textbf{0.910} \\ \hline \hline
+
+Table I shows the testing performance for each of the
+machine-learning methods. In general, each of the methods
+is fairly similar in accuracy to one another with Logistic
+Regression having the highest performance on the varying
+tuning levels. However, because the team had to use cross-
+validation accuracy, the individual performance of different
+methods likely varies for each training fold. Table II shows
+the performance increases with the fine-tuning of more
+parameters of BERT and higher accuracy can likely be ob-
+tained after tuning more attention layers. The final F1 score
+of the Neural Network is 0.888 which is very comparable
+to different submissions on the Kaggle completion, where
+higher-performing submissions have F1 scores in the 0.84
+to 1 range[1].
+
+TABLE II: A table of prompts that were classified incor-
+rectly by all machine learning methods on output from fine-
+tuned(4 Att & Pool) BERT.
+
+Text Prompt Disaster?
+like for this music video I want some real action like
+burning buildings and police chases
+No
+He came to a land which was engulfed in tribal war
+and turned it into a land of peace
+Yes
+Caution: breathing may be hazardous to your health. Yes
+In #islam saving a person is equal in reward to saving
+all humans! Islam is the opposite of terrorism!
+No
+Table III shows the text prompts that are misclassified
+by all of the machine learning methods. From this one
+can see all of the methods are most likely looking for
+keywords in the BERT representation of the prompts. For
+example, one can see why the methods misclassified the
+first prompt because it contains words like burning and
+police chase. These words are most likely highly correlated
+with actual disasters in most cases. The same phenomenon
+can be seen in the fourth prompt where the models likely
+associate terrorism with disaster tweets. Conversely, tweets
+of disasters that did not contain harsh words were classified
+incorrectly. For example, the third prompt reads more like
+a warning than a tweet about a natural disaster which likely
+led to the misclassification.
+
